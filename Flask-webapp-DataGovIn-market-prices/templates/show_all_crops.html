@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      
+      <h3>
+         <a href = "{{ url_for('show_all') }}">Crops</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h3>Crops (<a href = "{{ url_for('new') }}">Add Crop
+         </a>)</h3>
+      
+      <table>
+         <thead>
+            <tr>
+               <th>id</th><th>Name</th><th>state</th><th>district</th><th>market</th><th>commodity</th><th>variety</th><th>arrivaldate</th><th>minprice</th><th>maxprice</th><th>modalprice</th>
+            </tr>
+         </thead>
+         
+         <tbody>
+            {% for crop in crops %}
+               <tr>
+				 <td>{{ crop.id }}</td>
+                  <td>{{ crop.cropname }}</td>
+                  <td>{{ crop.state }}</td><td>{{ crop.district }}</td><td>{{ crop.market }}</td><td>{{ crop.commodity }}</td>
+				<td>{{ crop.variety }}</td><td>{{ crop.arrivaldate }}</td>
+				<td>{{ crop.minprice }}</td><td>{{ crop.maxprice }}</td><td>{{ crop.modalprice }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
